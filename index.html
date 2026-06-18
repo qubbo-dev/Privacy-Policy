@@ -82,7 +82,7 @@
 <body>
   <main>
     <h1>Privacy Policy</h1>
-    <div class="meta">Gigtick · Last updated May 17, 2026</div>
+    <div class="meta">Gigtick · Last updated June 18, 2026</div>
 
     <p>This privacy policy explains how the <strong>Gigtick</strong> iOS app handles your data.</p>
 
@@ -97,21 +97,46 @@
       <li><strong>Adding media to a concert</strong> — when you pick a photo or video for a concert, Gigtick stores a reference (<code>localIdentifier</code>) back to the original asset in your Photos library. The bytes stay in Photos; the app sandbox does not duplicate them.</li>
     </ol>
 
+    <h2>Calendar access</h2>
+    <p>If you choose to add a concert to your calendar, Gigtick asks for permission to write to your Calendar and creates a single event for that show (title, date, and venue). The app only writes the events you ask it to create. It does not read, scan, or upload your other calendar events, and nothing about your calendar leaves your device.</p>
+
+    <h2>Apple Music</h2>
+    <p>If you grant Apple Music access, Gigtick uses Apple's on-device MusicKit framework to:</p>
+    <ol>
+      <li><strong>Search the Apple Music catalog</strong> — to help you pick the right artist when adding a concert, and to load a curator-written artist biography when one exists.</li>
+      <li><strong>Build a setlist playlist</strong> — when you ask it to, the app creates a new playlist in <em>your</em> Apple Music library containing the songs from a concert's setlist. This requires an active Apple Music subscription and writes only to your own library.</li>
+    </ol>
+    <p>These requests are handled by Apple under your own Apple ID and are subject to <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Gigtick does not receive or store your Apple ID, and we do not see your library.</p>
+
     <h2>Network requests</h2>
-    <p>The app talks to a single backend service hosted on Cloudflare Workers (<code>https://gig1-api.qubbo.workers.dev</code>). That service is a thin, anonymous proxy that forwards lookups to public music data sources:</p>
+    <p>To enrich the concerts you add, Gigtick looks up public music data. The only thing ever sent in these requests is the artist name, event, or setlist you are looking at — never your identity, your concert history, your photos, or a device identifier. Lookups happen two ways:</p>
+
+    <h3 style="font-size:1.05rem;margin:22px 0 6px;">1. Through our proxy</h3>
+    <p>Some sources are reached through a single backend service we host on Cloudflare Workers (<code>https://gig1-api.qubbo.workers.dev</code>). It is a thin, anonymous proxy: it forwards the query, holds the API keys so the app doesn't have to, and adds caching headers so the same query is served from the edge for everyone. Your device's IP is not exposed to these sources.</p>
     <table>
       <thead>
         <tr><th>Source</th><th>What we ask for</th><th>Why</th></tr>
       </thead>
       <tbody>
-        <tr><td>Spotify</td><td>Artist search, artist images, community playlists</td><td>Picking the right artist when you add a concert, linking to a fan-made setlist playlist</td></tr>
+        <tr><td>Spotify</td><td>Artist search, artist images, community playlists and tracks</td><td>Picking the right artist when you add a concert, linking to a fan-made setlist playlist</td></tr>
         <tr><td>Setlist.fm</td><td>Past setlists, tour info, MusicBrainz artist IDs</td><td>Showing the songs played at the concert you attended</td></tr>
-        <tr><td>Ticketmaster</td><td>Upcoming events for an artist</td><td>Suggesting concerts when you add one to your wishlist</td></tr>
-        <tr><td>MusicBrainz</td><td>Artist genres</td><td>Tagging the artist with their style</td></tr>
-        <tr><td>Wikipedia</td><td>Public article summaries</td><td>Short biography on the artist detail screen</td></tr>
+        <tr><td>Ticketmaster</td><td>Upcoming events and attractions for an artist</td><td>Suggesting concerts when you add one to your wishlist</td></tr>
       </tbody>
     </table>
-    <p>Requests are sent over HTTPS. No login token, device identifier, IP-based profile, or analytics is attached. The proxy adds caching headers so the same query is served from the edge for subsequent users.</p>
+
+    <h3 style="font-size:1.05rem;margin:22px 0 6px;">2. Directly from your device</h3>
+    <p>A few sources are queried straight from the app, without going through our proxy. As with any direct web request, your device's IP address is visible to these services. The app sends only the artist name and a generic <code>User-Agent</code> identifying Gigtick; no account or device identifier is attached.</p>
+    <table>
+      <thead>
+        <tr><th>Source</th><th>What we ask for</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Wikipedia</td><td>Public article summaries</td><td>Short biography on the artist detail screen</td></tr>
+        <tr><td>Discogs</td><td>Public artist profile text</td><td>Biography fallback for artists Wikipedia doesn't cover</td></tr>
+        <tr><td>MusicBrainz</td><td>Artist genres</td><td>Tagging the artist with their style</td></tr>
+      </tbody>
+    </table>
+    <p>All requests are sent over HTTPS. No analytics, ad, or attribution SDKs are involved in any of them.</p>
 
     <h2>What is stored on our servers</h2>
     <p>Nothing user-specific. The Cloudflare Worker is stateless beyond the short-lived edge cache of the third-party responses. We do not log requests in a way that identifies individual users. No personal data, no concert history, no photos, no analytics.</p>
@@ -123,7 +148,7 @@
     <p>Gigtick does <strong>not</strong> track you across apps or websites. No SDKs for ads, analytics, or attribution are included. The app does not request the App Tracking Transparency permission because nothing it does qualifies as tracking.</p>
 
     <h2>Third-party content</h2>
-    <p>Setlists, tour data, artist information, and event listings shown in the app come from third-party services (Spotify, Setlist.fm, Ticketmaster, MusicBrainz, Wikipedia). The app links back to those services. Each is governed by its own terms; the app respects the published rate limits.</p>
+    <p>Setlists, tour data, artist information, and event listings shown in the app come from third-party services (Spotify, Setlist.fm, Ticketmaster, MusicBrainz, Wikipedia, Discogs, and Apple Music). The app links back to those services. Each is governed by its own terms; the app respects the published rate limits.</p>
 
     <h2>Children</h2>
     <p>Gigtick is not directed at children under 13. It does not collect data from any user.</p>
