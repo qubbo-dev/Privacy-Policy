@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gigtick — Support</title>
+  <meta name="description" content="Support and FAQ for the Gigtick iOS app — a personal concert diary that keeps everything on your device.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --fg: #1a1a1a;
+      --fg-muted: #555;
+      --bg: #fafafa;
+      --card: #fff;
+      --accent: #6a3df3;
+      --border: #e6e6e6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fg: #f0f0f0;
+        --fg-muted: #aaa;
+        --bg: #15151a;
+        --card: #1d1d24;
+        --accent: #a384ff;
+        --border: #2a2a32;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      padding: 32px 20px 64px;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 36px 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    h1 { font-size: 2rem; margin: 0 0 4px; }
+    .meta { color: var(--fg-muted); font-size: 0.9rem; margin-bottom: 28px; }
+    h2 { font-size: 1.2rem; margin: 28px 0 8px; }
+    p { margin: 0 0 14px; }
+    a { color: var(--accent); }
+    .contact {
+      margin: 8px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+    }
+    .contact a { font-weight: 600; }
+    strong { font-weight: 600; }
+    footer {
+      max-width: 720px;
+      margin: 24px auto 0;
+      text-align: center;
+      color: var(--fg-muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--fg-muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gigtick Support</h1>
+    <div class="meta">Your personal concert diary · Last updated June 19, 2026</div>
+
+    <p><strong>Gigtick</strong> helps you keep a diary of every concert you go to — the artists, setlists, venues, tickets, and the photos and videos from the night. Everything stays on your device.</p>
+
+    <h2>Contact us</h2>
+    <p>Have a question, found a bug, or want to suggest a feature? We'd love to hear from you and usually reply within a couple of days.</p>
+    <div class="contact">
+      📧 <a href="mailto:jakubko.babiak@gmail.com">jakubko.babiak@gmail.com</a>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <h2 style="font-size:1.05rem;">Do I need an account to use Gigtick?</h2>
+    <p>No. Gigtick works fully offline with no account or sign-up. You can start adding concerts right away.</p>
+
+    <h2 style="font-size:1.05rem;">Where is my data stored?</h2>
+    <p>Locally on your device. Your concerts, achievements, notes, and the references to your photos and videos are kept in the app on your iPhone — nothing is uploaded to our servers.</p>
+
+    <h2 style="font-size:1.05rem;">Why does the app ask for access to my Photos?</h2>
+    <p>For two things: <strong>Smart Import</strong>, which finds likely past-concert photo clusters on your device, and <strong>adding media to a concert</strong>. When you attach a photo or video, Gigtick stores a reference to the original in your Photos library rather than duplicating it, so the app stays small.</p>
+
+    <h2 style="font-size:1.05rem;">If I delete a photo or video inside Gigtick, is it removed from my Photos library?</h2>
+    <p>No. Deleting media in the app only removes Gigtick's reference (and any offline copy you downloaded). The original in your Photos library is never touched.</p>
+
+    <h2 style="font-size:1.05rem;">How do I back up my concerts?</h2>
+    <p>Your data is included in your iCloud device backup (Settings → your name → iCloud → iCloud Backup). Restoring a new iPhone from that backup brings your concerts back. Live sync across devices is planned for a future update.</p>
+
+    <h2 style="font-size:1.05rem;">I downloaded videos for offline — where do they live?</h2>
+    <p>Downloaded videos are stored on your device so they play instantly without internet, and they stay until you remove them. You can see the size and clear them anytime in <strong>Settings → Downloaded</strong>.</p>
+
+    <h2 style="font-size:1.05rem;">How do I delete my data?</h2>
+    <p>You can delete individual concerts in the app, or remove everything at once with <strong>Settings → Delete all data</strong>. Deleting the app from your iPhone also removes all of its data.</p>
+
+    <h2 style="font-size:1.05rem;">Why don't my photos show on another device?</h2>
+    <p>Photos and videos added as Photos-library references travel between your devices through <strong>iCloud Photos</strong>. If iCloud Photos is turned off, those items may not appear on a second device. Videos you explicitly downloaded for offline are kept by the app itself and always play.</p>
+
+    <h2>Privacy</h2>
+    <p>Gigtick does not track you and includes no ads or analytics SDKs. Read the full <a href="./index.html">Privacy Policy</a> for details on what the app does and doesn't do with your data.</p>
+  </main>
+  <footer>© 2026 Jakub Babiak · <a href="./index.html">Privacy Policy</a></footer>
+</body>
+</html>
